@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
+import TokenContext from './helpers/TokenContext';
 
-function NavBar({ token }) {
+function NavBar() {
+  const {loggedIn} = useContext(TokenContext);
+
   return (
     <nav className="NavBar navbar navbar-expand-lg navbar-dark">
       <span className="NavBar-Jobly navbar-brand">
         <NavLink to="/">Jobly</NavLink>
       </span>
       {
-        token
+        loggedIn
           ?
           <span className="NavBar-logged-in ml-auto">
             <NavLink to="/companies">Companies</NavLink>

@@ -3,15 +3,29 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Routes from './Routes';
 import NavBar from './NavBar';
+import TokenContext from './helpers/TokenContext'
 
 function App() {
-  const [token, setToken] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
+
+  const saveToken = (token) => {
+    if (token) {
+      setLoggedIn(true);
+      localStorage.setItem("token", token);
+    } else {
+      setLoggedIn(false);
+      localStorage.removeItem("token");
+    }
+  }
+  
   return (
     <div className="App">
+      <TokenContext.Provider value={{loggedIn, saveToken}}>
       <BrowserRouter>
-        <NavBar token={token} />
-        <Routes token={token} setToken={setToken} />
+        <NavBar />
+        <Routes />
       </BrowserRouter>
+      </TokenContext.Provider>
     </div>
   );
 }

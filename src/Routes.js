@@ -7,27 +7,27 @@ import Company from './Company';
 import Jobs from './Jobs';
 import Profile from './Profile';
 
-function Routes({ token, setToken }) {
+function Routes() {
 
   return (
     <Switch>
       <Route exact path="/">
-        <MainPage token={token} />
+        <MainPage />
       </Route>
       <Route exact path="/login">
-        <Login setToken={setToken}/>
+        <Login />
       </Route>
       <Route exact path="/companies">
-        <Companies token={token}/>
+        <Companies />
       </Route>
       <Route exact path="/companies/:name">
-        <Company token={token}/>
+        <Company />
       </Route>
       <Route exact path="/jobs">
-        <Jobs token={token}/>
+        <Jobs />
       </Route>
       <Route exact path="/profile">
-        <Profile token={token}/>
+        <Profile />
       </Route>
       <Redirect to="/" />
     </Switch>

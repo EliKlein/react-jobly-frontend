@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import JoblyApi from './helpers/JoblyApi'
 import FormInputs from './FormInputs';
+import TokenContext from './helpers/TokenContext'
 // import 'LoginForm.css'
 
 function LoginForm({ setToken }) {
@@ -10,6 +11,7 @@ function LoginForm({ setToken }) {
     username: "",
     password: ""
   }
+
   const history = useHistory();
 
   const [formData, setFormData] = useState(INITIAL_STATE);
