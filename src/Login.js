@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
+import './Login.css'
 
 function Login({setLog}) {
 
@@ -14,9 +15,13 @@ function Login({setLog}) {
 
   return (
     <div>
-      <button onClick={showLogin}>Login</button>
-      <button onClick={showSignUp}>Sign Up</button>
-      {form}
+      <div className="login-btns">
+        <button onClick={showLogin}>Login</button>
+        <button onClick={showSignUp}>Sign Up</button>
+      </div>
+      <div className="Login-container container">
+        {form}
+      </div>
     </div>
   )
 

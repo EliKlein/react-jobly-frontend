@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function MainPage({loggedIn}) {
   return (
-    <div className="MainPage">
+    <div className="MainPage jumbotron container">
       <h2>Jobly</h2>
       <p>All the jobs, in one convenient place</p>
       {
@@ -12,9 +12,7 @@ function MainPage({loggedIn}) {
         ?
         <h3>Welcome Back!</h3>
         :
-        <button className="MainPage-btn">
-          <Link to="/login">Log in/Sign Up</Link>
-        </button>
+          <Link className="MainPage-btn btn btn-secondary" to="/login">Log in/Sign Up</Link>
       }
     </div>
   );

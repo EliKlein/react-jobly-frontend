@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import './NavBar.css';
+import './NavBar.css';
 
 function NavBar({ token }) {
   return (
-    <nav className="NavBar">
-      <span className="NavBar-Jobly">
+    <nav className="NavBar navbar navbar-expand-lg navbar-dark">
+      <span className="NavBar-Jobly navbar-brand">
         <NavLink to="/">Jobly</NavLink>
       </span>
       {
@@ -18,7 +18,7 @@ function NavBar({ token }) {
             <NavLink to="/logout">Log out</NavLink>
           </span>
           :
-          <span className="NavBar-log-in">
+          <span className="NavBar-log-in ml-auto">
             <NavLink to="/login">Log in/Sign up</NavLink>
           </span>
       }

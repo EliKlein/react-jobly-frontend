@@ -1,20 +1,29 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+// import { Redirect } from 'react-router-dom';
 import JoblyApi from './helpers/JoblyApi';
+import Search from './Search';
+import CompanyCard from './CompanyCard';
 
-function Companies({token}) {
-  console.log("tokennnnnnnn", token);
-  if (!token) {
-    return (
-      <Redirect to="/login" />
-    )
-  }
+function Companies() {
 
-  let companies = JoblyApi.getCompanies();
+  const [companies, setCompanies] = useState([])
+
+  useEffect(() => {
+    async function getCompanies() {
+      let companies = await JoblyApi.getCompanies();
+      setCompanies(companies);
+    }
+    getCompanies();
+  }, []);
+
 
   return (
-    <p>Check your console</p>
-    
+    <div>
+      {/* <Search /> */}
+      {companies.map(company =>
+        <CompanyCard company={company}/>
+      )}
+    </div>
   )
 }
 
