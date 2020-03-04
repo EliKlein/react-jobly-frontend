@@ -9,15 +9,15 @@ function NavBar({ token }) {
         <NavLink to="/">Jobly</NavLink>
       </span>
       {
-        token ?
-          (
-            <span className="NavBar-logged-in">
-              <NavLink to="/companies">Companies</NavLink>
-              <NavLink to="/jobs">Jobs</NavLink>
-              <NavLink to="/profile">Profile</NavLink>
-              <NavLink to="/logout">Log out</NavLink>
-            </span>
-          ) :
+        token
+          ?
+          <span className="NavBar-logged-in">
+            <NavLink to="/companies">Companies</NavLink>
+            <NavLink to="/jobs">Jobs</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/logout">Log out</NavLink>
+          </span>
+          :
           <span className="NavBar-log-in">
             <NavLink to="/login">Log in/Sign up</NavLink>
           </span>

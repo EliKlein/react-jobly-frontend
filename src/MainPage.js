@@ -8,8 +8,10 @@ function MainPage({loggedIn}) {
       <h2>Jobly</h2>
       <p>All the jobs, in one convenient place</p>
       {
-        loggedIn ?
-        <h3>Welcome Back!</h3> :
+        loggedIn
+        ?
+        <h3>Welcome Back!</h3>
+        :
         <button className="MainPage-btn">
           <Link to="/login">Log in/Sign Up</Link>
         </button>

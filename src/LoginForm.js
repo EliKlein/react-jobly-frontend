@@ -22,7 +22,7 @@ function LoginForm({setLog}) {
     evt.preventDefault();
     let token = await JoblyApi.logIn(formData);
     setLog(token);
-    history.push("/companies");
+    history.push("/jobs");
   }
 
   return (
