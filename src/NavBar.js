@@ -2,14 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import './NavBar.css';
 
-function NavBar({ loggedIn }) {
+function NavBar({ token }) {
   return (
     <nav className="NavBar">
       <span className="NavBar-Jobly">
         <NavLink to="/">Jobly</NavLink>
       </span>
       {
-        loggedIn ?
+        token ?
           (
             <span className="NavBar-logged-in">
               <NavLink to="/companies">Companies</NavLink>

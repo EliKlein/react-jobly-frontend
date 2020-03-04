@@ -1,16 +1,33 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-// import './Routes.css';
 import MainPage from './MainPage';
+import Login from './Login';
+import Companies from './Companies';
+import Company from './Company';
+import Jobs from './Jobs';
+import Profile from './Profile';
 
-function Routes({ loggedIn }) {
+function Routes({ token, setLog }) {
+
   return (
     <Switch>
       <Route exact path="/">
-        <MainPage loggedIn={loggedIn} />
+        <MainPage token={token} />
       </Route>
       <Route exact path="/login">
-        <MainPage />
+        <Login setLog={setLog}/>
+      </Route>
+      <Route exact path="/companies">
+        <Companies token={token}/>
+      </Route>
+      <Route exact path="/companies/:name">
+        <Company token={token}/>
+      </Route>
+      <Route exact path="/jobs">
+        <Jobs token={token}/>
+      </Route>
+      <Route exact path="/profile">
+        <Profile token={token}/>
       </Route>
       <Redirect to="/" />
     </Switch>
