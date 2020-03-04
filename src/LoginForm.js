@@ -1,40 +1,45 @@
-import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import JoblyApi from './helpers/JoblyApi'
+import FormInputs from './FormInputs';
 // import 'LoginForm.css'
 
-function LoginForm({setLog}) {
+function LoginForm({ setToken }) {
 
   const INITIAL_STATE = {
-      username: "",
-      password: ""
+    username: "",
+    password: ""
   }
   const history = useHistory();
 
   const [formData, setFormData] = useState(INITIAL_STATE);
 
   const handleChange = (evt) => {
-    const {name, value} = evt.target;
-    setFormData(oldFormData => ({...oldFormData, [name]: value}));
+    const { name, value } = evt.target;
+    setFormData(oldFormData => ({ ...oldFormData, [name]: value }));
   }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     let token = await JoblyApi.logIn(formData);
-    setLog(token);
-    history.push("/jobs");
+    setToken(token);
+    history.push("/companies");
   }
+
+  const formInputs = [
+    {
+      name: "username",
+      value: formData.username
+    },
+    {
+      name: "password",
+      value: formData.password
+    }
+  ];
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
-        <input className="form-control" onChange={handleChange} id="username" name="username" value={formData.username} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input className="form-control" onChange={handleChange} id="password" name="password" value={formData.password}/>
-      </div>
+      <FormInputs handleChange={handleChange} inputs={formInputs}/>
       <button>Submit</button>
     </form>
   )

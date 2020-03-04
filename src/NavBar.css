@@ -1,4 +1,12 @@
 .NavBar {
-  background-color: #434e52;
+  background-color: #cccccc/*#434e52*/;
   margin-bottom: 20px;
+}
+.NavBar-logged-in > a {
+  margin-right: 40px;
+  font-size: 20px;
+}
+.NavBar-Jobly{
+  font-size: 30px;
+  font-weight: bolder;
 }

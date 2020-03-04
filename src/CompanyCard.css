@@ -1,0 +1,12 @@
+.CompanyCard{
+  margin: 15px auto;
+  color:black;
+  text-align: left;
+  padding:20px;
+}
+.CompanyCard:hover{
+  box-shadow: 5px 10px #888888;
+}
+.CompanyCard-name{
+  margin-bottom: 35px;
+}

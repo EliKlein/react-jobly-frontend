@@ -16,12 +16,17 @@ function Companies() {
     getCompanies();
   }, []);
 
+  async function searchCompanies(search){
+    let companies = await JoblyApi.getCompanies(search);
+    setCompanies(companies);
+  }
+
 
   return (
-    <div>
-      {/* <Search /> */}
+    <div className="container">
+      <Search search={searchCompanies}/>
       {companies.map(company =>
-        <CompanyCard company={company}/>
+        <CompanyCard key={company.handle} company={company}/>
       )}
     </div>
   )

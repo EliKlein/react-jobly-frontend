@@ -7,7 +7,7 @@ import Company from './Company';
 import Jobs from './Jobs';
 import Profile from './Profile';
 
-function Routes({ token, setLog }) {
+function Routes({ token, setToken }) {
 
   return (
     <Switch>
@@ -15,7 +15,7 @@ function Routes({ token, setLog }) {
         <MainPage token={token} />
       </Route>
       <Route exact path="/login">
-        <Login setLog={setLog}/>
+        <Login setToken={setToken}/>
       </Route>
       <Route exact path="/companies">
         <Companies token={token}/>

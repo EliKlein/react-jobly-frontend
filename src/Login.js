@@ -3,9 +3,9 @@ import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import './Login.css'
 
-function Login({setLog}) {
+function Login({setToken}) {
 
-  const logInForm = <LoginForm setLog={setLog}/>
+  const logInForm = <LoginForm setToken={setToken}/>
   const signupForm = <SignupForm />
 
   const [form, setForm] = useState(logInForm);

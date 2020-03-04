@@ -11,7 +11,7 @@ function NavBar({ token }) {
       {
         token
           ?
-          <span className="NavBar-logged-in">
+          <span className="NavBar-logged-in ml-auto">
             <NavLink to="/companies">Companies</NavLink>
             <NavLink to="/jobs">Jobs</NavLink>
             <NavLink to="/profile">Profile</NavLink>

@@ -5,12 +5,12 @@ import Routes from './Routes';
 import NavBar from './NavBar';
 
 function App() {
-  const [token, setLog] = useState(false);
+  const [token, setToken] = useState(true);
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar token={token} />
-        <Routes token={token} setLog={setLog} />
+        <Routes token={token} setToken={setToken} />
       </BrowserRouter>
     </div>
   );
