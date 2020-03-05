@@ -16,8 +16,8 @@ function Login() {
   return (
     <div>
       <div className="login-btns">
-        <button onClick={showLogin}>Login</button>
-        <button onClick={showSignUp}>Sign Up</button>
+        <button className="btn btn-secondary" onClick={showLogin}>Login</button>
+        <button className="btn btn-secondary" onClick={showSignUp}>Sign Up</button>
       </div>
       <div className="Login-container container">
         {form}

@@ -1,8 +1,10 @@
 .JobCard{
+  font-family: 'Playfair Display', serif;
   margin: 15px auto;
   text-align:left;
   padding:20px;
 }
+
 .JobCard-btn{
   float:right;
   position: relative;
@@ -12,4 +14,9 @@
 }
 .JobCard-title{
   margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+.JobCard:hover {
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.2);
 }

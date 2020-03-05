@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import JoblyApi from './helpers/JoblyApi'
 import FormInputs from './FormInputs';
 import TokenContext from './helpers/TokenContext'
-// import 'LoginForm.css'
+
 
 function LoginForm() {
 
@@ -28,18 +28,19 @@ function LoginForm() {
   const formInputs = [
     {
       name: "username",
-      value: formData.username
+      value: formData.username,
     },
     {
       name: "password",
-      value: formData.password
+      value: formData.password,
+      type: "password"
     }
   ];
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormInputs handleChange={handleChange} inputs={formInputs}/>
-      <button>Submit</button>
+      <FormInputs className="text-left" handleChange={handleChange} inputs={formInputs}/>
+      <button className="btn btn-secondary">Submit</button>
     </form>
   )
 }

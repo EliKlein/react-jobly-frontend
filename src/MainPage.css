@@ -1,0 +1,15 @@
+.MainPage-header {
+  font-family: 'Playfair Display', serif;
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.MainPage-desc{
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.MainPage-Welcome {
+  font-family: 'Playfair Display', serif;
+}

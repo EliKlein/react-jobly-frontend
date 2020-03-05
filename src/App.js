@@ -4,13 +4,15 @@ import './App.css';
 import Routes from './Routes';
 import NavBar from './NavBar';
 import TokenContext from './helpers/TokenContext';
+import jwt_decode from 'jwt-decode';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") ? true : false);
+  const token = localStorage.getItem("token");
+  const [loggedIn, setLoggedIn] = useState(token ? jwt_decode(token).username : false);
 
   const saveToken = (token) => {
     if (token) {
-      setLoggedIn(true);
+      setLoggedIn(jwt_decode(token).username);
       localStorage.setItem("token", token);
     } else {
       setLoggedIn(false);

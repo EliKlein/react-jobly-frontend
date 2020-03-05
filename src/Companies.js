@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from './helpers/JoblyApi';
 import Search from './Search';
 import CompanyCard from './CompanyCard';
+import './Companies.css'
 
 function Companies() {
-  const [companies, setCompanies] = useState([])
+  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     async function getCompanies() {
@@ -20,13 +21,13 @@ function Companies() {
   }
 
   return (
-    <div className="container">
+    <div className="Companies container">
       <Search search={searchCompanies} />
       {companies.map(company =>
-        <CompanyCard key={company.handle} company={company} />
+      <CompanyCard key={company.handle} company={company} />
       )}
     </div>
-  )
+  );
 }
 
 

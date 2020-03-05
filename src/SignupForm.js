@@ -35,26 +35,31 @@ function SignupForm() {
     },
     {
       name: "password",
-      value: formData.password
+      value: formData.password,
+      type: "password"
     },
     {
       name: "first_name",
-      value: formData.first_name
+      value: formData.first_name,
+      label: "First Name"
     },
     {
       name: "last_name",
-      value: formData.last_name
+      value: formData.last_name,
+      label: "Last Name"
     },
     {
       name: "email",
-      value: formData.email
+      value: formData.email,
+      type: "email",
+      label: "E-mail"
     },
   ];
 
   return (
     <form onSubmit={handleSubmit}>
       <FormInputs handleChange={handleChange} inputs={formInputs} />
-      <button>Submit</button>
+      <button className="btn btn-secondary">Submit</button>
     </form>
   )
 }

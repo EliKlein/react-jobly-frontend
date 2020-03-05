@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from './helpers/JoblyApi';
 import Search from './Search';
 import JobCard from './JobCard';
+import './Jobs.css';
 
 function Jobs() {
 
@@ -23,10 +24,10 @@ function Jobs() {
 
 
   return (
-    <div className="container">
+    <div className="Jobs container">
       <Search search={searchJobs}/>
       {jobs.map(job =>
-        <JobCard key={job.id} job={job}/>
+      <JobCard key={job.id} job={job}/>
       )}
     </div>
   )

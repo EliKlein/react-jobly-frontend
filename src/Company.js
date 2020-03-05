@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import JoblyApi from './helpers/JoblyApi';
 import JobCard from './JobCard';
+import './Company.css';
 
 function Company() {
   const { name } = useParams();
@@ -20,26 +21,27 @@ function Company() {
     getCompany();
   }, [name]);
 
-  return (
-    company
-      ?
-      <div className="container">
-        <h3>{company.name}</h3>
-        <p>{company.description}</p>
+
+  if (company) {
+    return (
+      <div className="Company container">
+        <h3 className="Company-header">{company.name}</h3>
+        <p className="Company-desc">{company.description}</p>
         {company.jobs.map(job =>
           <JobCard key={job.id} job={job} />
         )}
       </div>
-      :
-      (
-        error
-          ?
-          <p>{error}</p>
-          :
-          <p>Loading...</p>
-      )
+    )
+  } else if (error) {
+    return (
+      <p>{error}</p>
+    )
+  } else {
+    return (
+      <p>Loading...</p>
+    )
+  }
 
-  )
 }
 
 export default Company;

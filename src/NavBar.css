@@ -1,12 +1,25 @@
 .NavBar {
-  background-color: #cccccc/*#434e52*/;
+  background: #070000;
+  background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);
+  background: linear-gradient(to right, #070000, #4C0001, #070000);
   margin-bottom: 20px;
 }
+
 .NavBar-logged-in > a {
   margin-right: 40px;
   font-size: 20px;
 }
+
 .NavBar-Jobly{
   font-size: 30px;
   font-weight: bolder;
+  color: antiquewhite;
+}
+
+.Navbar-text {
+  color: antiquewhite;
+}
+
+.Navbar-text:hover{
+  text-decoration: none;
 }

@@ -1,0 +1,12 @@
+.Company {
+  width: 60%;
+  font-family: 'Playfair Display', serif;
+}
+
+.Company-header {
+  font-weight: bolder;
+}
+
+.Company-desc {
+  font-weight: bold;
+}

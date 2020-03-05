@@ -5,8 +5,10 @@
   padding:20px;
 }
 .CompanyCard:hover{
-  box-shadow: 5px 10px #888888;
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 .CompanyCard-name{
   margin-bottom: 35px;
+  font-weight: bold;
 }
