@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-// import JoblyApi from './helpers/JoblyApi';
+import React, { useState, useContext } from 'react';
+import JoblyApi from './helpers/JoblyApi';
 import FormInputs from './FormInputs';
+import TokenContext from './helpers/TokenContext';
 // import 'SignupForm.css'
 
 function SignupForm() {
@@ -14,18 +14,18 @@ function SignupForm() {
     email: ""
   }
 
-  const history = useHistory();
-
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const {saveToken} = useContext(TokenContext);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setFormData(oldFormData => ({ ...oldFormData, [name]: value }));
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    history.push("/");
+    let token = await JoblyApi.signUp(formData);
+    saveToken(token);
   }
 
   const formInputs = [

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { Redirect } from 'react-router-dom';
 import JoblyApi from './helpers/JoblyApi';
 import Search from './Search';
 import CompanyCard from './CompanyCard';
 
 function Companies() {
-
   const [companies, setCompanies] = useState([])
 
   useEffect(() => {
@@ -16,17 +14,16 @@ function Companies() {
     getCompanies();
   }, []);
 
-  async function searchCompanies(search){
+  async function searchCompanies(search) {
     let companies = await JoblyApi.getCompanies(search);
     setCompanies(companies);
   }
 
-
   return (
     <div className="container">
-      <Search search={searchCompanies}/>
+      <Search search={searchCompanies} />
       {companies.map(company =>
-        <CompanyCard key={company.handle} company={company}/>
+        <CompanyCard key={company.handle} company={company} />
       )}
     </div>
   )
