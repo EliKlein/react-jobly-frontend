@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import JoblyApi from './helpers/JoblyApi';
 import FormInputs from './FormInputs';
-import TokenContext from './helpers/TokenContext';
+import { useLoginSignupForm } from './helpers/hooks';
 // import 'SignupForm.css'
 
 function SignupForm() {
@@ -13,20 +13,8 @@ function SignupForm() {
     last_name: "",
     email: ""
   }
-
-  const [formData, setFormData] = useState(INITIAL_STATE);
-  const {saveToken} = useContext(TokenContext);
-
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setFormData(oldFormData => ({ ...oldFormData, [name]: value }));
-  }
-
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    let token = await JoblyApi.signUp(formData);
-    saveToken(token);
-  }
+  //                                                                        THE KEYWORD THIS SUCKS
+  let { formData, handleChange, handleSubmit, errorDiv } = useLoginSignupForm("signUp", INITIAL_STATE);
 
   const formInputs = [
     {
@@ -58,6 +46,7 @@ function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {errorDiv}
       <FormInputs handleChange={handleChange} inputs={formInputs} />
       <button className="btn btn-secondary">Submit</button>
     </form>

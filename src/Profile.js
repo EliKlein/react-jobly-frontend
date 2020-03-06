@@ -2,11 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import JoblyApi from './helpers/JoblyApi';
 import FormInputs from './FormInputs';
 import TokenContext from './helpers/TokenContext';
-// import 'SignupForm.css'
+import './Profile.css'
 
 function Profile() {
 
   const { loggedIn } = useContext(TokenContext);
+  const [error, setError] = useState(false);
 
   const INITIAL_STATE = {
     first_name: "",
@@ -17,26 +18,48 @@ function Profile() {
   }
 
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [alertShown, setAlertShown] = useState(false);
 
   useEffect(() => {
     async function getUser() {
-      let user = await JoblyApi.getUser(loggedIn);
-      delete user.jobs;
-      setFormData(oldUser => ({...oldUser, ...user}));
+      try {
+        let userRes = await JoblyApi.getUser(loggedIn);
+        delete userRes.jobs;
+        delete userRes.username;
+        setFormData(oldUser => ({ ...oldUser, ...userRes }));
+      } catch (err) {
+        setError(err);
+      }
     }
     getUser();
   }, [loggedIn]);
 
   const handleChange = (evt) => {
-    const { name, value } = evt.target;
+    let { name, value } = evt.target;
+    if (name === "photo_url" && value === "") value = null;
     setFormData(oldFormData => ({ ...oldFormData, [name]: value }));
   }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    delete formData.username;
-    let user = await JoblyApi.updateUser(loggedIn, formData);
-      alert ("Your changes has been successfully updated");
+    for (let key in formData) {
+      let val = formData[key];
+      if (val === null) {
+        delete formData[key];
+      }
+    }
+    try {
+      let userRes = await JoblyApi.updateUser(loggedIn, formData);
+      delete userRes.username;
+      setFormData(oldUser => ({
+        ...oldUser,
+        ...userRes,
+        password: ""
+      }));
+      setAlertShown(true);
+    } catch (err) {
+      setError(err);
+    }
   }
 
   const formInputs = [
@@ -70,12 +93,24 @@ function Profile() {
   ];
 
   return (
-    <div>
-      <h3>Profile</h3>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <FormInputs handleChange={handleChange} inputs={formInputs} />
-        <button className="btn btn-secondary">Save Changes</button>
-      </form>
+    <div className="container">
+      {error ? <div className="alert alert-danger">{error}</div> : null}
+      {
+        alertShown ?
+          <div className="Profile-alert alert alert-success container" role="alert">You've successfully updated your profile!</div>
+          :
+          null
+      }
+      <div className="Profile-container">
+        <h3 className="Profile-header">Profile</h3>
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <div className="Profile-username form-group">
+            <label>Username: {loggedIn}</label>
+          </div>
+          <FormInputs handleChange={handleChange} inputs={formInputs} />
+          <button className="btn btn-secondary">Save Changes</button>
+        </form>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,17 @@
+.Profile-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 40px;
+  background-color: white;
+}
+
+.Profile-alert, .Profile-container {
+  margin-top: 50px;
+}
+
+.Profile-username{
+  font-weight: bolder;
+}
+.Profile-header{
+  margin-bottom: 20px;
+}

@@ -9,15 +9,15 @@ function Companies() {
 
   useEffect(() => {
     async function getCompanies() {
-      let companies = await JoblyApi.getCompanies();
-      setCompanies(companies);
+      let companiesRes = await JoblyApi.getCompanies();
+      setCompanies(companiesRes);
     }
     getCompanies();
   }, []);
 
   async function searchCompanies(search) {
-    let companies = await JoblyApi.getCompanies(search);
-    setCompanies(companies);
+    let companiesRes = await JoblyApi.getCompanies(search);
+    setCompanies(companiesRes);
   }
 
   return (

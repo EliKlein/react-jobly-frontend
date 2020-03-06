@@ -6,8 +6,11 @@ function FormInputs({ handleChange, inputs }) {
     if (label === undefined) {
       label = name[0].toUpperCase() + name.slice(1);
     }
+    if(value === null || value === undefined){
+      value = "";
+    }
     return (
-      <div key={i} className="FormInputs form-group">
+      <div key={i} className="form-group">
         <label htmlFor={name}>{label}</label>
         <input className="form-control" onChange={handleChange} id={name} name={name} value={value} type={type} />
       </div>

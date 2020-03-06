@@ -7,8 +7,9 @@
 
 .JobCard-btn{
   float:right;
-  position: relative;
-  top: 100px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   font-size:16px;
   font-weight:bold;
 }

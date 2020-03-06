@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import JoblyApi from './helpers/JoblyApi'
 import FormInputs from './FormInputs';
-import TokenContext from './helpers/TokenContext'
+import { useLoginSignupForm } from './helpers/hooks';
 
 
 function LoginForm() {
@@ -10,20 +10,7 @@ function LoginForm() {
     username: "",
     password: ""
   }
-
-  const [formData, setFormData] = useState(INITIAL_STATE);
-  const {saveToken} = useContext(TokenContext);
-
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setFormData(oldFormData => ({ ...oldFormData, [name]: value }));
-  }
-
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    let token = await JoblyApi.logIn(formData);
-    saveToken(token);
-  }
+  let { formData, handleChange, handleSubmit, errorDiv } = useLoginSignupForm("logIn", INITIAL_STATE);
 
   const formInputs = [
     {
@@ -36,10 +23,10 @@ function LoginForm() {
       type: "password"
     }
   ];
-
   return (
     <form onSubmit={handleSubmit}>
-      <FormInputs className="text-left" handleChange={handleChange} inputs={formInputs}/>
+      {errorDiv}
+      <FormInputs className="text-left" handleChange={handleChange} inputs={formInputs} />
       <button className="btn btn-secondary">Submit</button>
     </form>
   )
